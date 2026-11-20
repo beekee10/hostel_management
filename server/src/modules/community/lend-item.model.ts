@@ -7,7 +7,18 @@ const lendItemSchema = new Schema(
     description: { type: String, trim: true, default: "" },
     category: {
       type: String,
-      enum: ["CYCLE", "LAPTOP", "BOOK", "FOOD", "ELECTRONICS", "OTHER"],
+      enum: [
+        "CYCLE",
+        "LAPTOP",
+        "BOOK",
+        "FOOD",
+        "ELECTRONICS",
+        "OTHER",
+        "FOOD_SNACKS",
+        "STUDY_TOOLS",
+        "DAILY_ESSENTIALS",
+        "MEDICINE",
+      ],
       default: "OTHER",
     },
     status: {

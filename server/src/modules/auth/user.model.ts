@@ -3,10 +3,13 @@ import mongoose, { Schema } from "mongoose";
 export const ROLES = [
   "STUDENT",
   "STUDENT_COORDINATOR",
-  "MESS_COORDINATOR",
+  "SUPERVISOR",
   "WARDEN",
+  "MESS_COORDINATOR",
   "ADMIN",
 ] as const;
+
+export type UserRole = (typeof ROLES)[number];
 
 const schema = new Schema(
   {
@@ -30,6 +33,40 @@ const schema = new Schema(
       type: String,
       enum: ROLES,
       default: "STUDENT",
+    },
+    avatarUrl: {
+      type: String,
+      default: "",
+    },
+    roomNumber: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+    block: {
+      type: String,
+      trim: true,
+      default: "Block A",
+    },
+    department: {
+      type: String,
+      trim: true,
+      default: "Computer Science",
+    },
+    phoneNumber: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+    emergencyContact: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+    status: {
+      type: String,
+      enum: ["ACTIVE", "ON_LEAVE", "GRADUATED", "SUSPENDED"],
+      default: "ACTIVE",
     },
   },
   { timestamps: true },

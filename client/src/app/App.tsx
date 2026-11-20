@@ -1,42 +1,36 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoute";
+import { AppLayout } from "../components/layout/AppLayout";
 import { LoginPage } from "../features/auth/pages/LoginPage";
 import { DashboardPage } from "../features/dashboard/pages/DashboardPage";
-import { HostelPage } from "../features/hostel/pages/HostelPage";
-import { MessPage } from "../features/mess/pages/MessPage";
+import { NoticesPage } from "../features/notices/pages/NoticesPage";
+import { EventsPage } from "../features/events/pages/EventsPage";
 import { ComplaintsPage } from "../features/complaints/pages/ComplaintsPage";
-import { CommunityPage } from "../features/community/pages/CommunityPage";
+import { HotTopicsPage } from "../features/community/pages/HotTopicsPage";
+import { MessPage } from "../features/mess/pages/MessPage";
+import { ChatPage } from "../features/chat/pages/ChatPage";
+import { StudentsPage } from "../features/students/pages/StudentsPage";
 import { UnauthorizedPage } from "../pages/UnauthorizedPage";
 
 export default function App() {
   return (
-    <>
-      {/* <nav className="nav">
-        <strong>Smart Hostel</strong>
-        <div>
-          <Link to="/">Dashboard</Link>
-          <Link to="/hostel">Hostel</Link>
-          <Link to="/mess">Mess</Link>
-          <Link to="/complaints">Complaints</Link>
-          <Link to="/community">Community</Link>
-          <Link to="/login">Login</Link>
-        </div>
-      </nav> */}
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/unauthorized" element={<UnauthorizedPage />} />
 
-      <main className="container">
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/unauthorized" element={<UnauthorizedPage />} />
-
-          <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<DashboardPage />} />
-            <Route path="/hostel" element={<HostelPage />} />
-            <Route path="/mess" element={<MessPage />} />
-            <Route path="/complaints" element={<ComplaintsPage />} />
-            <Route path="/community" element={<CommunityPage />} />
-          </Route>
-        </Routes>
-      </main>
-    </>
+      <Route element={<ProtectedRoute />}>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/notices" element={<NoticesPage />} />
+          <Route path="/hostel" element={<NoticesPage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/complaints" element={<ComplaintsPage />} />
+          <Route path="/community" element={<HotTopicsPage />} />
+          <Route path="/mess" element={<MessPage />} />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/students" element={<StudentsPage />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 }

@@ -1,12 +1,13 @@
 import { createContext } from "react";
-import type { AuthUser } from "../types/api";
+import type { User, Role } from "../types";
 
-interface AuthContextValue {
-  user: AuthUser | null;
+export interface AuthContextValue {
+  user: User | null;
   accessToken: string | null;
   isAuthenticated: boolean;
-  login: (token: string, user: AuthUser) => void;
+  login: (token: string, user: User) => void;
   logout: () => void;
+  quickSwitchRole: (role: Role) => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthContextValue | undefined>(undefined);

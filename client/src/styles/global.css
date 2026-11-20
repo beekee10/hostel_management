@@ -1,3 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+}
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  /* Light Mode Design Tokens */
+  --bg-main: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-highlight: #facc15;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --accent-yellow: #eab308;
+  --accent-yellow-bg: rgba(250, 204, 21, 0.12);
+}
+
+.dark, html.dark, body.dark {
+  /* Dark Mode Tokens (Drizzle ORM aesthetic) */
+  --bg-main: #090a0d;
+  --bg-surface: #111216;
+  --bg-surface-elevated: #18191f;
+  --border-subtle: #23252d;
+  --border-highlight: #facc15;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent-yellow: #facc15;
+  --accent-yellow-bg: rgba(250, 204, 21, 0.08);
+}
+
+html {
+  color-scheme: light dark;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Background grid pattern */
+.drizzle-grid-bg {
+  background-image: radial-gradient(rgba(234, 179, 8, 0.12) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.dark .drizzle-grid-bg, html.dark .drizzle-grid-bg {
+  background-image: radial-gradient(rgba(250, 204, 21, 0.06) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Yellow Border Card */
+.drizzle-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drizzle-card:hover {
+  border-color: rgba(250, 204, 21, 0.45);
+  box-shadow: 0 0 20px -5px rgba(250, 204, 21, 0.12);
+}
+
+.drizzle-card-active {
+  border-color: #facc15 !important;
+  box-shadow: 0 0 25px -5px rgba(250, 204, 21, 0.2) !important;
+}
+
+/* Monospace Badge Chip */
+.drizzle-badge {
+  font-family: var(--font-mono);
+  font-size: 0.725rem;
+  letter-spacing: -0.02em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+.drizzle-badge-yellow {
+  background: rgba(250, 204, 21, 0.15);
+  color: #ca8a04;
+  border: 1px solid rgba(250, 204, 21, 0.4);
+}
+
+.dark .drizzle-badge-yellow, html.dark .drizzle-badge-yellow {
+  background: rgba(250, 204, 21, 0.12);
+  color: #facc15;
+  border: 1px solid rgba(250, 204, 21, 0.35);
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.25);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(250, 204, 21, 0.5);
+}

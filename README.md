@@ -55,7 +55,7 @@ npm install
 npm run dev
 ```
 
-MongoDB can run locally or with `docker-compose`.
+The application connects to MongoDB Atlas or local MongoDB.
 
 ## Suggested implementation order
 
